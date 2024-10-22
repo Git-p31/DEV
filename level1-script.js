@@ -36,16 +36,6 @@ const questions = [
 
 let currentQuestionIndex = 0;
 
-// Функція шифрування (просте XOR-шифрування)
-function encrypt(text) {
-    let encrypted = '';
-    const key = 'secret'; // Ключ для шифрування
-    for (let i = 0; i < text.length; i++) {
-        encrypted += String.fromCharCode(text.charCodeAt(i) ^ key.charCodeAt(i % key.length));
-    }
-    return encrypted;
-}
-
 // Показ питання в терміналі
 function showQuestion() {
     output.textContent += `\n${questions[currentQuestionIndex].question}`;
@@ -62,14 +52,14 @@ clearInputButton.addEventListener('click', function() {
 });
 
 // Відправка відповіді на сервер для перевірки
-function checkAnswer(encryptedAnswer) {
+function checkAnswer(userAnswer) {
     fetch('/api/check-answer', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-            answer: encryptedAnswer,
+            answer: userAnswer,
             questionIndex: currentQuestionIndex
         })
     })
@@ -96,8 +86,7 @@ function checkAnswer(encryptedAnswer) {
 
 commandInput.addEventListener('keydown', function(event) {
     if (event.key === 'Enter') {
-        const userAnswer = commandInput.value.trim();
-        const encryptedAnswer = encrypt(userAnswer); // Шифруємо відповідь перед відправкою
-        checkAnswer(encryptedAnswer); // Відправляємо на сервер
+        const userAnswer = commandInput.value.trim(); // Отримуємо відповідь
+        checkAnswer(userAnswer); // Відправляємо відповідь на сервер
     }
 });
