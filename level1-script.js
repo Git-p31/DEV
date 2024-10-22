@@ -43,50 +43,38 @@ function showQuestion() {
 
 showQuestion();
 
+// Очищення терміналу
 clearTerminalButton.addEventListener('click', function() {
     output.textContent = 'Enter your answers through the terminal below:';
 });
 
+// Очищення поля введення
 clearInputButton.addEventListener('click', function() {
     commandInput.value = '';
 });
 
-// Відправка відповіді на сервер для перевірки
+// Перевірка відповіді локально
 function checkAnswer(userAnswer) {
-    fetch('/api/check-answer', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            answer: userAnswer,
-            questionIndex: currentQuestionIndex
-        })
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.correct) {
-            output.textContent += '\nПравильна відповідь!';
-            currentQuestionIndex++;
-            commandInput.value = '';
+    const correctAnswer = questions[currentQuestionIndex].answer;
+    if (userAnswer === correctAnswer) {
+        output.textContent += '\nПравильна відповідь!';
+        currentQuestionIndex++;
+        commandInput.value = ''; // Очищуємо інпут після правильної відповіді
 
-            if (currentQuestionIndex < questions.length) {
-                showQuestion();
-            } else {
-                output.textContent += '\nТест завершено!';
-            }
+        if (currentQuestionIndex < questions.length) {
+            showQuestion(); // Показуємо наступне питання
         } else {
-            output.textContent += '\nНеправильна відповідь!';
+            output.textContent += '\nТест завершено!';
         }
-    })
-    .catch(error => {
-        console.error('Помилка:', error);
-    });
+    } else {
+        output.textContent += '\nНеправильна відповідь! Спробуйте ще раз.';
+    }
 }
 
+// Обробка введеної відповіді
 commandInput.addEventListener('keydown', function(event) {
     if (event.key === 'Enter') {
-        const userAnswer = commandInput.value.trim(); // Отримуємо відповідь
-        checkAnswer(userAnswer); // Відправляємо відповідь на сервер
+        const userAnswer = commandInput.value.trim(); // Отримуємо відповідь користувача
+        checkAnswer(userAnswer); // Локальна перевірка відповіді
     }
 });

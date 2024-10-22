@@ -31,15 +31,18 @@ function startDownload() {
         if (loadingProcess >= 100) {
             clearInterval(loadingInterval);
             output.textContent += `\nInstallation completed. Python 3.9.2 installed successfully.`;
-            setTimeout(showLevelSelection, 2000);
+            setTimeout(showLevelSelection, 2000); // Через 2 секунди з'являється вибір рівня
         }
     }, 1000); // Кожну секунду додаємо 10%
 }
 
-// Показ вибору рівня
+// Показ вибору рівня з анімацією
 function showLevelSelection() {
-    terminal.classList.add('hidden');
-    levelSelection.classList.remove('hidden');
+    terminal.classList.add('hidden'); // Ховаємо термінал після завершення установки
+    levelSelection.classList.remove('hidden'); // Показуємо блок вибору рівня
+    setTimeout(() => {
+        levelSelection.classList.add('visible'); // Додаємо плавну появу через клас visible
+    }, 100); // Трохи затримки для плавного переходу
 }
 
 // Логіка для вибору рівня тесту
