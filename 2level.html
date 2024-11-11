@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Легкий уровень</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="container">
+    <div id="terminal">
+        <h2>Легкий уровень</h2>
+        <p id="timer">Осталось времени: 05:00</p>
+        <p id="question">Загрузка вопроса...</p>
+        <div id="options"></div>
+        <input type="number" id="answerInput" placeholder="Введите номер ответа (1-3)">
+        <button onclick="checkAnswer()">Ответить</button>
+        <p id="result"></p>
+    </div>
+</div>
+<script src="scripts.js"></script>
+<script>
+    const level = " medium";
+    startQuiz(level);
+</script>
+</body>
+</html>

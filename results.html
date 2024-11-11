@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Результаты</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="terminal">
+    <h2>Результаты теста</h2>
+    <p>Вы правильно ответили на <span id="score"></span> из 10 вопросов.</p>
+    <button onclick="window.location.href='index.html'">Вернуться на главную</button>
+</div>
+<script>
+    document.getElementById('score').textContent = localStorage.getItem('userScore');
+</script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тяжелый уровень</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="container">
+    <div id="terminal">
+        <h2>Тяжелый уровень</h2>
+        <p id="timer">Осталось времени: 06:00</p>
+        <p id="question">Загрузка вопроса...</p>
+        <div id="options">
+            <label class="custom-radio">
+                <input type="radio" name="answer" value="1">
+                <span class="radio-btn"></span>
+                <span class="option-text">Ответ 1</span>
+            </label>
+            <label class="custom-radio">
+                <input type="radio" name="answer" value="2">
+                <span class="radio-btn"></span>
+                <span class="option-text">Ответ 2</span>
+            </label>
+            <label class="custom-radio">
+                <input type="radio" name="answer" value="3">
+                <span class="radio-btn"></span>
+                <span class="option-text">Ответ 3</span>
+            </label>
+        </div>
+        <button onclick="checkAnswer()">Ответить</button>
+        <p id="result"></p>
+    </div>
+</div>
+<script src="scripts.js"></script>
+<script>
+    const level = "hard";
+    startQuiz(level);
+</script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+/* Основной стиль страницы */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Контейнер для центрации содержимого */
+.container {
+    width: 100%;
+    max-width: 600px;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Заголовок вопроса */
+#question {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: #444;
+}
+
+/* Стили для блока выбора ответа */
+#options {
+    margin-bottom: 20px;
+}
+
+/* Стили для метки радио кнопок */
+.custom-radio {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+/* Стили для радио кнопок */
+.custom-radio input[type="radio"] {
+    display: none;
+}
+
+.radio-btn {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid #4285f4;
+    margin-right: 15px;
+    position: relative;
+    transition: background-color 0.3s ease;
+}
+
+.radio-btn:after {
+    content: '';
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: background-color 0.3s ease;
+}
+
+.custom-radio input[type="radio"]:checked + .radio-btn {
+    background-color: #4285f4;
+}
+
+.custom-radio input[type="radio"]:checked + .radio-btn:after {
+    background-color: #fff;
+}
+
+/* Стили для текста рядом с радиокнопкой */
+.option-text {
+    font-size: 18px;
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+.custom-radio:hover .option-text {
+    color: #4285f4;
+}
+
+/* Кнопка */
+button {
+    padding: 12px;
+    margin-top: 20px;
+    width: 100%;
+    cursor: pointer;
+    background-color: #4285f4;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    transition: all 0.3s ease;
+}
+
+/* Эффект при наведении на кнопку */
+button:hover {
+    background-color: #357ae8;
+}
